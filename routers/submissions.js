@@ -39,5 +39,22 @@ router.post("/submissions", (req, res) => {
             console.log(submission);
         })
 })
+router.get("/submissions/search", (req, res) => {
+    if(!req.query.q){
+        console.log('Bad query');
+        alert('Bad query -- please search again');
+    }
+    Submission.find({name: req.query.q})
+        .exec()
+        .then(filteredSubmissions => {
+            res.status(200).json({
+                submissions: filteredSubmissions
+            });
+        })
+        .catch(err => {
+            console.log('Catch on foreach loop');
+        })
+    console.log(req.query.q);
+})
 
 module.exports = router;
