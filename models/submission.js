@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const schema = mongoose.Schema;
+const Schema = mongoose.Schema;
 
 const submissionSchema = new Schema({
     name: {
@@ -35,4 +35,4 @@ const submissionSchema = new Schema({
 });
 
 const Submission = mongoose.model('Submission', submissionSchema);
-module.export = Submission;
+module.exports = Submission;
