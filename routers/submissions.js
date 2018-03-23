@@ -14,6 +14,30 @@ router.get("/submissions", (req, res) => {
         .catch(err => {
             console.log('Not happening');
         })
+});
+
+router.post("/submissions", (req, res) => {
+    if(!req.body.name){
+        console.log('Bad postnamp request');
+    }
+    const submission = new Submission({
+        karmaCount: req.body.karmaCount,
+        name: req.body.name,
+        latitude: req.body.latitude,
+        longitude: req.body.longitude,
+        price: req.body.price,
+        purchaseType: req.body.purchaseType
+    });
+    const x = submission
+        .save()
+        .then(response => {
+            res.status(200).json({
+                msg: "Successfully made submission"
+            })
+        })
+        .catch(err => {
+            console.log(submission);
+        })
 })
 
 module.exports = router;
