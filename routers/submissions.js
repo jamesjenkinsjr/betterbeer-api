@@ -22,11 +22,11 @@ router.post("/submissions", (req, res) => {
     }
     const submission = new Submission({
         karmaCount: req.body.karmaCount,
-        name: req.body.name,
+        name: req.body.name.toLowerCase(),
         latitude: req.body.latitude,
         longitude: req.body.longitude,
         price: req.body.price,
-        purchaseType: req.body.purchaseType
+        purchaseType: req.body.purchaseType.toLowerCase()
     });
     const x = submission
         .save()
@@ -40,11 +40,10 @@ router.post("/submissions", (req, res) => {
         })
 })
 router.get("/submissions/search", (req, res) => {
-    if(!req.query.q){
+    if(!req.query.beer){
         console.log('Bad query');
-        alert('Bad query -- please search again');
     }
-    Submission.find({name: req.query.q})
+    Submission.find({name: req.query.beer})
         .exec()
         .then(filteredSubmissions => {
             res.status(200).json({
@@ -54,7 +53,6 @@ router.get("/submissions/search", (req, res) => {
         .catch(err => {
             console.log('Catch on foreach loop');
         })
-    console.log(req.query.q);
 })
 
 module.exports = router;
