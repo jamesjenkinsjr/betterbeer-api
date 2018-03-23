@@ -6,6 +6,14 @@ const submissionSchema = new Schema({
         required: true,
         type: String
     },
+    latitude: {
+        required: true,
+        type: Number
+    },
+    longitude: {
+        required: true,
+        type: Number
+    },
     karmaCount: {
         required: true,
         type: Number,
