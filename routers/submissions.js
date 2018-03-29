@@ -1,7 +1,9 @@
 const express = require('express');
 const router = express.Router();
-
+const bodyParser = require('body-parser');
 const Submission = require('../models/submission');
+
+router.use(bodyParse.urlencoded({extended: true}));
 
 router.get("/submissions", (req, res) => {
     Submission.find()
@@ -18,10 +20,9 @@ router.get("/submissions", (req, res) => {
 
 router.post("/submissions", (req, res) => {
     if(!req.body.name){
-        console.log('Bad postnamp request');
+        console.log('Bad post request');
     }
     const submission = new Submission({
-        karmaCount: req.body.karmaCount,
         name: req.body.name.toLowerCase(),
         latitude: req.body.latitude,
         longitude: req.body.longitude,
