@@ -37,7 +37,9 @@ router.post("/submissions", (req, res) => {
             })
         })
         .catch(err => {
-            console.log(submission);
+            res.status(500).json({
+                msg: 'RIP fam'
+            })
         })
 })
 router.get("/submissions/search", (req, res) => {
