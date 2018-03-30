@@ -18,7 +18,9 @@ const PORT = process.env.PORT || 5000;
 serverApp.get('/', cors(), (req, res) => {
     res.send('I work Fam!');
 });
-
+serverApp.post('/submissions', cors(), (req, res) => {
+    res.send('I work Fam!');
+});
 serverApp.listen(PORT, () => {
     console.log('Now listening on port 5000');
 });

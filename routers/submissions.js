@@ -3,7 +3,7 @@ const router = express.Router();
 const bodyParser = require('body-parser');
 const Submission = require('../models/submission');
 
-router.use(bodyParse.urlencoded({extended: true}));
+router.use(bodyParser.urlencoded({extended: true}));
 
 router.get("/submissions", (req, res) => {
     Submission.find()
