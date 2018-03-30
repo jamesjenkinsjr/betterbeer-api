@@ -18,7 +18,7 @@ const PORT = process.env.PORT || 5000;
 serverApp.get('/', cors(), (req, res) => {
     res.send('I work Fam!');
 });
-serverApp.post('/', cors(), (req, res) => {
+serverApp.post('/submissions', cors(), (req, res) => {
     res.send('I work Fam!');
 });
 serverApp.listen(PORT, () => {
