@@ -24,8 +24,8 @@ router.post("/submissions", (req, res) => {
     }
     const submission = new Submission({
         name: req.body.name.toLowerCase(),
-        latitude: req.body.latitude,
-        longitude: req.body.longitude,
+        location: req.body.location,
+        placeID: req.body.placeID,
         price: req.body.price,
         purchaseType: req.body.purchaseType.toLowerCase()
     });
