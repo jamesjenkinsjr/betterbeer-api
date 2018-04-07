@@ -46,7 +46,7 @@ router.get("/submissions/search", (req, res) => {
     if(!req.query.beer){
         console.log('Bad query');
     }
-    Submission.find({name: { "$regex": req.query.beer, "$options": "i" }})
+    Submission.find({'name' : new RegExp(req.query.beer, 'i')})
         .exec()
         .then(filteredSubmissions => {
             res.status(200).json({
